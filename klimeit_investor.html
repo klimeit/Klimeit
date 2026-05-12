@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>КЛИМЭЙТ - Инвестиционная презентация</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{
+  --navy:#0C447C;--blue:#185FA5;--lblue:#B5D4F4;
+  --sky:#E8F3FC;--teal:#1D9E75;--lteal:#E0F5EF;
+  --gray1:#1E293B;--gray2:#475569;--gray3:#94A3B8;
+  --line:#E2E8F0;--white:#FFFFFF;--bg:#F7F9FC;
+  --amber:#B45309;--lamber:#FEF3C7;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--gray1);overflow-x:hidden}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(12,68,124,0.97);backdrop-filter:blur(12px);
+  padding:0 40px;height:56px;display:flex;align-items:center;justify-content:space-between;
+}
+.nav-logo img{height:28px;display:block}
+.nav-links{display:flex;gap:4px}
+.nav-links a{
+  color:rgba(255,255,255,0.7);font-size:11px;font-weight:500;
+  text-decoration:none;padding:6px 10px;border-radius:4px;transition:all .2s;white-space:nowrap;
+}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,0.12)}
+.nav-cta{
+  background:var(--teal);color:#fff;padding:8px 18px;
+  border-radius:6px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;
+}
+.nav-cta:hover{background:#15896A;transform:translateY(-1px)}
+
+/* SECTIONS */
+section{padding:80px 0;width:100%;display:block}
+.container{max-width:1160px;margin:0 auto;padding:0 40px;width:100%}
+
+/* HERO */
+#hero{
+  min-height:100vh;padding:0;
+  background:linear-gradient(135deg,#0C447C 0%,#0d3566 50%,#0f2d52 100%);
+  position:relative;overflow:hidden;
+}
+#hero::before{
+  content:'';position:absolute;top:-20%;right:-10%;width:700px;height:700px;
+  border-radius:50%;background:radial-gradient(circle,rgba(24,95,165,0.25) 0%,transparent 70%);
+}
+#hero::after{
+  content:'';position:absolute;bottom:-15%;left:-10%;width:500px;height:500px;
+  border-radius:50%;background:radial-gradient(circle,rgba(29,158,117,0.15) 0%,transparent 70%);
+}
+.hero-inner{
+  position:relative;z-index:2;
+  display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
+  max-width:1160px;margin:0 auto;padding:0 40px;min-height:100vh;
+}
+.hero-logo{height:44px;margin-bottom:28px;display:block}
+.hero-label{font-size:11px;font-weight:600;letter-spacing:0.15em;color:var(--lblue);text-transform:uppercase;margin-bottom:16px}
+.hero-title{
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  font-size:clamp(34px,4vw,54px);line-height:1.1;color:#fff;margin-bottom:20px;
+}
+.hero-title span{color:var(--lblue)}
+.hero-sub{font-size:15px;color:rgba(255,255,255,0.65);line-height:1.7;margin-bottom:36px}
+.hero-badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:36px}
+.badge{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;padding:6px 14px;border-radius:20px;font-size:11px;font-weight:500}
+.hero-btn{
+  display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;
+  padding:14px 28px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all .25s;
+}
+.hero-btn:hover{background:#15896A;transform:translateY(-2px);box-shadow:0 8px 24px rgba(29,158,117,0.4)}
+.hero-kpis{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.kpi-card{
+  background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);
+  border-radius:16px;padding:26px 22px;backdrop-filter:blur(8px);transition:all .3s;
+}
+.kpi-card:hover{background:rgba(255,255,255,0.13);transform:translateY(-3px)}
+.kpi-val{font-family:'Montserrat',sans-serif;font-weight:800;font-size:38px;line-height:1;color:#fff;margin-bottom:8px}
+.kpi-val.accent{color:var(--teal)}
+.kpi-label{font-size:12px;color:rgba(255,255,255,0.6);font-weight:500;line-height:1.4}
+.kpi-hook{font-size:10px;color:rgba(255,255,255,0.4);margin-top:4px;font-style:italic}
+
+/* SEC HEADER */
+.sec-header{margin-bottom:44px}
+.sec-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--blue);background:var(--sky);padding:5px 12px;border-radius:4px;margin-bottom:12px}
+.sec-title{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(24px,2.8vw,36px);color:var(--navy);line-height:1.2;margin-bottom:10px}
+.sec-sub{font-size:14px;color:var(--gray2);max-width:600px;line-height:1.65}
+.hook-note{
+  display:inline-flex;align-items:center;gap:6px;margin-top:10px;
+  font-size:11px;color:var(--amber);font-weight:600;
+  background:var(--lamber);padding:5px 12px;border-radius:4px;
+}
+
+/* CARDS */
+.cards-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.cards-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
+.cards-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.card{
+  background:#fff;border-radius:14px;padding:26px;
+  border:1px solid var(--line);box-shadow:0 2px 8px rgba(12,68,124,0.05);
+  transition:all .25s;
+}
+.card:hover{box-shadow:0 8px 24px rgba(12,68,124,0.1);transform:translateY(-3px)}
+.card-icon{width:40px;height:40px;border-radius:10px;background:var(--sky);display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:18px}
+.card-icon.teal{background:var(--lteal)}
+.card-title{font-family:'Montserrat',sans-serif;font-weight:700;font-size:14px;color:var(--navy);margin-bottom:8px}
+.card-text{font-size:13px;color:var(--gray2);line-height:1.65}
+
+/* KPI ROW */
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px}
+.kpi-mini{background:#fff;border-radius:12px;padding:20px;border:1px solid var(--line);text-align:center}
+.kpi-mini .val{font-family:'Montserrat',sans-serif;font-weight:800;font-size:26px;color:var(--navy);line-height:1}
+.kpi-mini .val.teal{color:var(--teal)}
+.kpi-mini .lbl{font-size:11px;color:var(--gray3);margin-top:6px;font-weight:500}
+
+/* CHART */
+.chart-wrap{background:#fff;border-radius:16px;padding:28px;border:1px solid var(--line)}
+.chart-wrap canvas{max-height:320px}
+
+/* STREAM */
+.stream-grid{display:grid;grid-template-columns:1fr 1fr 1.15fr;gap:16px}
+.stream{border-radius:14px;padding:26px;border:1px solid var(--line);position:relative;overflow:hidden}
+.stream.s1{background:var(--lteal);border-color:rgba(29,158,117,0.2)}
+.stream.s2{background:var(--sky)}
+.stream.s3{background:#fff}
+.stream-bar{height:4px;border-radius:2px;margin-bottom:18px}
+.stream.s1 .stream-bar{background:var(--teal)}
+.stream.s2 .stream-bar{background:var(--blue)}
+.stream.s3 .stream-bar{background:var(--navy)}
+.stream-title{font-family:'Montserrat',sans-serif;font-weight:700;font-size:14px;margin-bottom:14px}
+.stream.s1 .stream-title{color:var(--teal)}
+.stream.s2 .stream-title{color:var(--blue)}
+.stream.s3 .stream-title{color:var(--navy)}
+.stream-items{list-style:none}
+.stream-items li{font-size:12px;color:var(--gray2);padding:3px 0;padding-left:12px;position:relative;line-height:1.5}
+.stream-items li::before{content:'–';position:absolute;left:0;color:var(--gray3)}
+
+/* TEAM */
+.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.team-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.team-card{background:var(--bg);border-radius:12px;padding:20px;border:1px solid var(--line)}
+.team-card.leader{background:var(--sky);border-color:rgba(24,95,165,0.2)}
+.team-role{font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;color:var(--navy);margin-bottom:4px}
+.team-count{font-family:'Montserrat',sans-serif;font-weight:800;font-size:20px;color:var(--blue);margin-bottom:4px}
+.team-desc{font-size:11px;color:var(--gray2)}
+
+/* ERP */
+.erp-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.mgmt-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+.mgmt-item{background:#fff;border-radius:8px;padding:12px 16px;border-left:3px solid var(--navy);font-size:13px;color:var(--gray1);box-shadow:0 1px 4px rgba(12,68,124,0.06)}
+.erp-modules{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.erp-mod{background:var(--sky);border-radius:8px;padding:12px}
+.erp-mod-title{font-weight:700;font-size:11px;color:var(--navy);margin-bottom:2px}
+.erp-mod-desc{font-size:10px;color:var(--gray2)}
+
+/* MARKET */
+.market-cards{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.mcard{border-radius:14px;padding:26px;border:1px solid var(--line);background:#fff;position:relative;overflow:hidden}
+.mcard-accent{position:absolute;left:0;top:0;bottom:0;width:5px}
+
+/* RISKS */
+.risk-table{display:flex;flex-direction:column;gap:8px}
+.risk-row{display:grid;grid-template-columns:190px 1fr 1fr;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+.risk-name{padding:14px 18px;font-weight:700;font-size:12px;color:#fff;display:flex;align-items:center}
+.risk-problem{padding:14px 18px;font-size:12px;color:var(--gray2);background:#fff;display:flex;align-items:center}
+.risk-solution{padding:14px 18px;font-size:12px;color:var(--gray1);background:var(--lteal);display:flex;align-items:flex-start;gap:6px;border-left:1px solid var(--line)}
+.risk-solution::before{content:'✓';color:var(--teal);font-weight:700;flex-shrink:0}
+
+/* FLEX */
+.flex-grid{display:flex;flex-direction:column;gap:10px}
+.flex-row{display:grid;grid-template-columns:90px 1fr 1fr;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+.flex-badge{display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:800;font-size:12px;color:#fff}
+.flex-title{padding:14px 18px;font-weight:700;font-size:13px;color:var(--navy);background:var(--sky);display:flex;align-items:center;border-left:1px solid var(--line)}
+.flex-desc{padding:14px 18px;font-size:12px;color:var(--gray2);background:#fff;display:flex;align-items:center;line-height:1.6;border-left:1px solid var(--line)}
+.footnote{font-size:11px;color:var(--amber);font-style:italic;margin-top:10px}
+
+/* LEGAL */
+.legal-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.legal-block{border-radius:12px;padding:22px;background:#fff;border:1px solid var(--line)}
+.legal-head{display:flex;align-items:center;gap:8px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;color:var(--navy);margin-bottom:14px}
+.legal-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.legal-items{list-style:none;display:flex;flex-direction:column;gap:7px}
+.legal-items li{font-size:12px;color:var(--gray1);padding-left:14px;position:relative;line-height:1.5}
+.legal-items li::before{content:'·';position:absolute;left:0;color:var(--blue);font-weight:700;font-size:16px;line-height:0.9;top:2px}
+.zero-badge{display:inline-block;background:var(--lteal);color:var(--teal);font-weight:700;padding:2px 7px;border-radius:4px;font-size:11px}
+
+/* OWNERSHIP */
+.ownership-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.profit-flow{display:flex;flex-direction:column;gap:8px}
+.pf-step{border-radius:10px;padding:14px 18px;display:flex;justify-content:space-between;align-items:center}
+.pf-label{font-size:13px;font-weight:600}
+.pf-val{font-family:'Montserrat',sans-serif;font-weight:700;font-size:16px}
+
+/* CHANNELS */
+.channel-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.ch-card{background:#fff;border-radius:10px;padding:14px 16px;border:1px solid var(--line);display:flex;align-items:flex-start;gap:10px}
+.ch-icon{font-size:16px;flex-shrink:0;margin-top:2px}
+.ch-title{font-weight:600;font-size:12px;color:var(--navy);margin-bottom:2px}
+.ch-desc{font-size:11px;color:var(--gray3);line-height:1.4}
+
+/* GROWTH */
+.growth-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.growth-card{border-radius:14px;padding:26px;background:#fff;border:1px solid var(--line)}
+.growth-num{font-family:'Montserrat',sans-serif;font-weight:800;font-size:32px;color:var(--navy);margin-bottom:8px}
+.growth-title{font-weight:700;font-size:14px;color:var(--navy);margin-bottom:8px}
+.growth-text{font-size:13px;color:var(--gray2);line-height:1.6}
+
+/* DEALS */
+.deals-kpi{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px}
+.deal-kpi{background:#fff;border-radius:12px;padding:24px;border:1px solid var(--line);text-align:center}
+.deal-kpi .val{font-family:'Montserrat',sans-serif;font-weight:800;font-size:30px;color:var(--navy)}
+.deal-kpi .val.teal{color:var(--teal)}
+.deal-kpi .lbl{font-size:11px;color:var(--gray3);margin-top:6px;font-weight:500}
+
+/* INVESTOR */
+.inv-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.inv-card{border-radius:12px;padding:24px;background:#fff;border:1px solid var(--line);border-left:4px solid var(--blue)}
+.inv-card.teal{border-left-color:var(--teal)}
+.inv-card h4{font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;color:var(--navy);margin-bottom:8px}
+.inv-card p{font-size:12px;color:var(--gray2);line-height:1.6}
+
+/* ADV */
+.adv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+.adv-card{border-radius:12px;padding:22px;text-align:center;background:#fff;border:1px solid var(--line)}
+.adv-card:nth-child(odd){background:var(--sky)}
+.adv-icon{font-size:24px;margin-bottom:10px}
+.adv-title{font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;color:var(--navy);margin-bottom:6px}
+.adv-desc{font-size:12px;color:var(--gray2);line-height:1.6}
+
+/* CLIENTS */
+.client-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.cl-card{background:#fff;border-radius:12px;padding:20px;border:1px solid var(--line);border-top:4px solid var(--navy);text-align:center}
+.cl-title{font-weight:700;font-size:13px;color:var(--navy);margin-bottom:6px}
+.cl-desc{font-size:11px;color:var(--gray2);line-height:1.5}
+
+/* CONTACT */
+#contact{background:linear-gradient(135deg,var(--navy),#0d3566);min-height:auto;padding:80px 0}
+#contact .sec-title{color:#fff}
+#contact .sec-sub{color:rgba(255,255,255,0.6)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-top:40px}
+.ci{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.ci-icon{width:38px;height:38px;border-radius:9px;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.ci-label{font-size:10px;color:rgba(255,255,255,0.5);margin-bottom:2px}
+.ci-val{font-size:13px;color:#fff;font-weight:500}
+.contact-cta{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:18px;padding:32px;text-align:center}
+.contact-cta h3{font-family:'Montserrat',sans-serif;font-weight:700;font-size:20px;color:#fff;margin-bottom:8px}
+.contact-cta p{font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:22px}
+.cta-btn{display:inline-block;background:var(--teal);color:#fff;padding:13px 30px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:all .25s}
+.cta-btn:hover{background:#15896A;transform:translateY(-2px)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(22px);transition:all .6s cubic-bezier(.4,0,.2,1)}
+.reveal.visible{opacity:1;transform:none}
+
+/* CONF */
+.conf-bar{background:var(--lamber);border-bottom:1px solid rgba(180,83,9,0.2);text-align:center;padding:8px;font-size:11px;font-weight:600;color:var(--amber);letter-spacing:0.08em}
+
+/* ALT BG */
+.alt-bg{background:#fff}
+.alt-bg2{background:var(--bg)}
+
+@media(max-width:900px){
+  nav{padding:0 20px}
+  .nav-links{display:none}
+  .hero-inner{grid-template-columns:1fr;gap:32px;padding:80px 20px 40px}
+  .container{padding:0 20px}
+  .cards-2,.cards-3,.cards-4,.stream-grid,.team-grid,.team-row,
+  .erp-grid,.ownership-grid,.inv-grid,.adv-grid,.growth-grid,
+  .legal-grid,.contact-grid,.market-cards,.kpi-row,.deals-kpi,
+  .channel-grid,.client-grid{grid-template-columns:1fr}
+  .risk-row{grid-template-columns:1fr}
+  .flex-row{grid-template-columns:70px 1fr}
+  .flex-desc{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="conf-bar">КОНФИДЕНЦИАЛЬНО · Только для потенциальных инвесторов · Май 2026</div>
+
+<nav>
+  <div class="nav-logo" style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:17px;color:#fff;letter-spacing:0.05em">КЛИМЭЙТ</div>
+  <div class="nav-links">
+    <a href="#about">О компании</a>
+    <a href="#problem">Проблема</a>
+    <a href="#market">Рынок</a>
+    <a href="#finance">Финансы</a>
+    <a href="#model">Бизнес-модель</a>
+    <a href="#team">Команда</a>
+    <a href="#erp">Автоматизация</a>
+    <a href="#marketing">Маркетинг</a>
+    <a href="#clients">Клиенты</a>
+    <a href="#assets">Активы</a>
+    <a href="#risks">Риски</a>
+    <a href="#ownership">Структура</a>
+    <a href="#legal">Юридика</a>
+    <a href="#growth">Рост</a>
+    <a href="#investor">Инвестору</a>
+    <a href="#contact">Контакты</a>
+  </div>
+  <a href="#contact" class="nav-cta">Связаться →</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div>
+      
+      <div class="hero-label">Инвестиционная презентация · Май 2026 · Компания Климэйт</div>
+      <h1 class="hero-title">Сервис климатического<br><span>оборудования B2B</span></h1>
+      <p class="hero-sub">Работающий бизнес с прозрачными цифрами.<br>Реальный актив. Еженедельные выплаты.</p>
+      <div class="hero-badges">
+        <span class="badge">Инжиниринг</span>
+        <span class="badge">Сервис ТО</span>
+        <span class="badge">Монтаж</span>
+        <span class="badge">Москва и МО</span>
+      </div>
+      <a href="#about" class="hero-btn">Смотреть презентацию →</a>
+    </div>
+    <div class="hero-kpis">
+      <div class="kpi-card">
+        <div class="kpi-val">×6.9</div>
+        <div class="kpi-label">Рост выручки<br>за 5 лет</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-val accent">152 млн</div>
+        <div class="kpi-label">Выручка 2025, ₽</div>
+      </div>
+      <div class="kpi-card" style="grid-column:span 2">
+        <div class="kpi-val accent">25%</div>
+        <div class="kpi-label">Рентабельность (чистой прибыли) 2025</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- О КОМПАНИИ -->
+<section id="about" class="alt-bg">
+<div class="container">
+  <div class="reveal">
+    <div class="sec-header">
+      <div class="sec-tag">О компании</div>
+      <h2 class="sec-title">B2B инжиниринг и сервис<br>климатических систем</h2>
+      
+    </div>
+  </div>
+  <div class="kpi-row reveal">
+    <div class="kpi-mini"><div class="val">2020</div><div class="lbl">Год основания</div></div>
+    <div class="kpi-mini"><div class="val">21</div><div class="lbl">Человек в команде</div></div>
+    <div class="kpi-mini"><div class="val teal">×6.9</div><div class="lbl">Рост за 5 лет</div></div>
+    <div class="kpi-mini"><div class="val teal">25%</div><div class="lbl">Рентабельность<br>(чистой прибыли) 2025</div></div>
+  </div>
+  <div class="cards-3 reveal">
+    <div class="card" style="border-left:4px solid var(--blue)">
+      <div class="card-icon">🔧</div>
+      <div class="card-title">Монтаж и поставки</div>
+      <div class="card-text">Замена и монтаж промышленных чиллеров, VRF/VRV-систем. Такелаж, шефмонтаж, пуско-наладка.</div>
+    </div>
+    <div class="card" style="border-left:4px solid var(--teal)">
+      <div class="card-icon teal">📋</div>
+      <div class="card-title">Годовое ТО</div>
+      <div class="card-text">Сервисные контракты с плановыми выездами 2× в год и оперативным аварийным реагированием.</div>
+    </div>
+    <div class="card" style="border-left:4px solid var(--navy)">
+      <div class="card-icon">⚙️</div>
+      <div class="card-title">Крупные ремонты</div>
+      <div class="card-text">Замена компрессоров и агрегатов, диагностика, заправка. Любые бренды и типы оборудования.</div>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:40px;padding-top:40px;border-top:1px solid var(--line)">
+    <div style="display:flex;align-items:flex-start;gap:24px;background:var(--sky);border-radius:14px;padding:28px 30px;border-left:5px solid var(--blue)">
+      <div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--blue);margin-bottom:8px">Цель компании</div>
+        <div style="font-size:15px;font-weight:700;color:var(--navy);line-height:1.55;margin-bottom:6px">B2C-стандарт в B2B-сегменте</div>
+        <p style="font-size:14px;color:var(--gray2);line-height:1.65">
+          Создать высокий уровень клиентоориентированности и технологичности в B2B-сфере по стандартам потребительского рынка.
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+
+  
+</section>
+
+<!-- ПРОБЛЕМА + РЕШЕНИЕ -->
+<section id="problem" class="alt-bg2">
+<div class="container">
+
+  <!-- ПРОБЛЕМА -->
+  <div class="reveal">
+    <div class="sec-header">
+      <div class="sec-tag">Проблема</div>
+      <h2 class="sec-title">Вентиляция и кондиционирование для бизнеса -<br>как пища для человека</h2>
+    </div>
+  </div>
+
+  <!-- Описание -->
+  <div class="reveal" style="background:var(--navy);border-radius:16px;padding:32px 36px;margin-bottom:24px">
+    <p style="color:#fff;font-size:16px;line-height:1.75;font-weight:400">
+      Без климатического оборудования невозможно представить функционирование современного бизнеса.
+      Это не вопрос комфорта - это вопрос работоспособности. Склад без вентиляции, производство без охлаждения,
+      торговый центр без кондиционирования - все это остановка бизнеса с прямыми финансовыми потерями.
+    </p>
+  </div>
+
+  <!-- ЦА -->
+  <div class="reveal" style="margin-bottom:24px">
+    <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray3);margin-bottom:14px">Целевая аудитория</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+      <div style="background:#fff;border-radius:12px;padding:18px;text-align:center;border:1px solid var(--line)">
+        <div style="font-size:26px;margin-bottom:8px">🏬</div>
+        <div style="font-weight:700;font-size:13px;color:var(--navy)">ТРЦ</div>
+        <div style="font-size:11px;color:var(--gray3);margin-top:4px">и ритейл</div>
+      </div>
+      <div style="background:#fff;border-radius:12px;padding:18px;text-align:center;border:1px solid var(--line)">
+        <div style="font-size:26px;margin-bottom:8px">🏢</div>
+        <div style="font-weight:700;font-size:13px;color:var(--navy)">БЦ и офисы</div>
+        <div style="font-size:11px;color:var(--gray3);margin-top:4px">коммерческая недвижимость</div>
+      </div>
+      <div style="background:#fff;border-radius:12px;padding:18px;text-align:center;border:1px solid var(--line)">
+        <div style="font-size:26px;margin-bottom:8px">📦</div>
+        <div style="font-weight:700;font-size:13px;color:var(--navy)">Складские комплексы</div>
+        <div style="font-size:11px;color:var(--gray3);margin-top:4px">логистика и хранение</div>
+      </div>
+      <div style="background:#fff;border-radius:12px;padding:18px;text-align:center;border:1px solid var(--line)">
+        <div style="font-size:26px;margin-bottom:8px">🏭</div>
+        <div style="font-weight:700;font-size:13px;color:var(--navy)">Производства</div>
+        <div style="font-size:11px;color:var(--gray3);margin-top:4px">промышленные объекты</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Проблема -->
+  <div class="reveal" style="margin-bottom:24px">
+    <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray3);margin-bottom:14px">В чем проблема</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px">
+      <div style="background:#fff;border-radius:12px;padding:22px;border:1px solid var(--line);border-top:4px solid #DC2626">
+        <div style="font-size:20px;margin-bottom:10px">⚡</div>
+        <div style="font-weight:700;font-size:14px;color:#DC2626;margin-bottom:8px">Сбой = бизнес встает</div>
+        <div style="font-size:13px;color:var(--gray2);line-height:1.6">Станки не охлаждаются. Люди не могут работать. Клиенты не приходят. Каждый час простоя - прямые потери.</div>
+      </div>
+      <div style="background:#fff;border-radius:12px;padding:22px;border:1px solid var(--line);border-top:4px solid var(--amber)">
+        <div style="font-size:20px;margin-bottom:10px">👷</div>
+        <div style="font-weight:700;font-size:14px;color:var(--amber);margin-bottom:8px">Своих инженеров не держат</div>
+        <div style="font-size:13px;color:var(--gray2);line-height:1.6">Климатическое оборудование - сверхтехнологичное. Содержать узкого специалиста в штате экономически нецелесообразно.</div>
+      </div>
+      <div style="background:#fff;border-radius:12px;padding:22px;border:1px solid var(--line);border-top:4px solid var(--blue)">
+        <div style="font-size:20px;margin-bottom:10px">🏚</div>
+        <div style="font-weight:700;font-size:14px;color:var(--blue);margin-bottom:8px">Рынок застрял в 2000-х</div>
+        <div style="font-size:13px;color:var(--gray2);line-height:1.6">Сервисные компании работают без современных стандартов. Субподряд без контроля. Клиент не знает, кто приезжает на объект.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Вывод -->
+  <div class="reveal" style="background:linear-gradient(135deg,var(--navy),#1a4f8a);border-radius:12px;padding:22px 28px;display:flex;align-items:center;gap:16px;margin-bottom:64px">
+    <div style="font-size:28px;flex-shrink:0">→</div>
+    <p style="color:#fff;font-size:15px;font-weight:600;line-height:1.6">Весь бизнес нуждается в оперативной, качественной поддержке климатического оборудования под ключ - и готов за это платить регулярно.</p>
+  </div>
+
+
+</div>
+</section>
+
+<!-- РЫНОК -->
+<section id="market" class="alt-bg">
+<div class="container">
+  <div class="reveal">
+    <div class="sec-header">
+      <div class="sec-tag">Рынок</div>
+      <h2 class="sec-title">Надежная рыночная ниша</h2>
+      <p class="sec-sub">Стабильный структурный спрос - вне зависимости от экономики</p>
+    </div>
+  </div>
+  <div class="market-cards reveal" style="margin-bottom:16px">
+    <div class="mcard"><div class="mcard-accent" style="background:var(--teal)"></div>
+      <div class="card-title">📈 Рост даже в кризис</div>
+      <div class="card-text" style="margin-top:8px">Сегмент показал рост в 2020 (пандемия) и в 2022 году. Оборудование обслуживается вне зависимости от экономики.</div>
+    </div>
+    <div class="mcard"><div class="mcard-accent" style="background:var(--navy)"></div>
+      <div class="card-title">🔄 Цикл замены оборудования</div>
+      <div class="card-text" style="margin-top:8px">Чиллеры 2000-х годов подходят к расчетному сроку службы - рынок замены активен и будет расти ближайшие 5 лет.</div>
+    </div>
+    <div class="mcard"><div class="mcard-accent" style="background:var(--blue)"></div>
+      <div class="card-title">❤️ Жизненно важное оборудование</div>
+      <div class="card-text" style="margin-top:8px">ТРЦ, офис, производство, склад - всем нужен климат 365 дней в году. Этот спрос не исчезнет ни при каком сценарии.</div>
+    </div>
+    <div class="mcard"><div class="mcard-accent" style="background:var(--amber)"></div>
+      <div class="card-title">📅 Обязательность сервиса 2× в год</div>
+      <div class="card-text" style="margin-top:8px">Плановое ТО - обязательное условие эксплуатации. Бизнес не держит собственных инженеров. Спрос структурный и предсказуемый.</div>
+    </div>
+  </div>
+
+  <div style="margin-top:48px" class="reveal">
+    <div class="sec-header">
+      <div class="sec-tag">Позиция Климэйт</div>
+      <h2 class="sec-title">Рынок фрагментирован - доминирующего игрока нет</h2>
+    </div>
+  </div>
+  <div class="cards-2 reveal" style="margin-bottom:16px">
+    <div class="card">
+      <div class="card-icon">🏛</div>
+      <div class="card-title">«Старые» игроки держатся по инерции</div>
+      <div class="card-text">Позиции заняты не за счет превосходства, а за счет давних отношений. Клиенты выбрали их в эпоху дефицита и остались по инерции.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔒</div>
+      <div class="card-title">Годовой контракт = барьер входа</div>
+      <div class="card-text">Клиент, подписавший договор, меняет подрядчика крайне редко. Рынок захватывают через новые объекты - не через переманивание.</div>
+    </div>
+  </div>
+  <div class="cards-2 reveal">
+    <div class="card" style="border-left:4px solid var(--amber);background:var(--lamber)">
+      <div class="card-icon" style="background:rgba(180,83,9,0.1)">⚠️</div>
+      <div class="card-title" style="color:var(--amber)">Двухуровневый барьер входа</div>
+      <div class="card-text">Снизу войти легко: кафе, частники, малый бизнес. Но это низкая маржа при высокой нагрузке. Сверху - сложно: крупный бизнес требует референс-лист, пакет для СБ и ценовую конкурентность, которую дает только объем закупок.</div>
+    </div>
+    <div class="card" style="background:var(--lteal);border-color:rgba(29,158,117,0.2)">
+      <div class="card-icon teal">⭐</div>
+      <div class="card-title">Климэйт - «золотая середина»</div>
+      <div class="card-text">Достаточно крупные для ТРЦ и БЦ. Достаточно гибкие, чтобы обыгрывать закостенелых конкурентов. УТП: гибкость · скорость · технологичность.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ФИНАНСЫ -->
+<section id="finance" class="alt-bg2">
+<div class="container">
+  <div class="reveal">
+    <div class="sec-header">
+      <div class="sec-tag">Финансы</div>
+      <h2 class="sec-title">Финансовые результаты 2020–2026</h2>
+      <p class="sec-sub">Стабильный рост · все цифры в млн рублей</p>
+      <div class="hook-note">🔒 Точные цифры предоставим по запросу после подписания NDA</div>
+    </div>
+  </div>
+  <div class="kpi-row reveal">
+    <div class="kpi-mini"><div class="val">×6.9</div><div class="lbl">Рост выручки 2020→2025</div></div>
+    <div class="kpi-mini"><div class="val teal">25%</div><div class="lbl">Рентабельность<br>(чистой прибыли) 2025</div></div>
+    <div class="kpi-mini"><div class="val">+32%</div><div class="lbl">Рост прибыли г/г 2024→2025</div></div>
+    <div class="kpi-mini"><div class="val teal">200</div><div class="lbl">План выручки 2026, млн ₽</div></div>
+  </div>
+  <div class="chart-wrap reveal" style="height:420px;padding-left:12px">
+    <canvas id="revenueChart"></canvas>
+  </div>
+  <div class="reveal" style="margin-top:16px;font-size:11px;color:var(--gray3);line-height:1.7;font-style:italic;padding:0 4px">
+    Показатели включают все операционные структуры компании на момент их работы. Часть из них впоследствии выделена в отдельные структуры. Точная разбивка по финансовым результатам - по запросу после подписания NDA.
+  </div>
+</div>
+</section>
+
+<!-- БИЗНЕС-МОДЕЛЬ -->
+<section id="model" class="alt-bg">
+<div class="container">
+  <div class="reveal">
+    <div class="sec-header">
+      <div class="sec-tag">Бизнес-модель</div>
+      <h2 class="sec-title">Три потока выручки</h2>
+      <p class="sec-sub">Постоянное обслуживание · сервис · монтаж и поставки</p>
+    </div>
+  </div>
+  <div class="stream-grid reveal">
+    <div class="stream s1">
+      <div class="stream-bar"></div>
+      <div class="stream-title">Годовые контракты ТО</div>
+      <ul class="stream-items">
+        <li>Постоянная сервисная база клиентов</li>
+        <li>Плановые ТО минимум 2× в год</li>
+        <li>Гарантированный повторяющийся доход</li>
+        <li>Источник кросс-продаж ремонтов и замен</li>
+      </ul>
+    </div>
+    <div class="stream s2">
+      <div class="stream-bar"></div>
+      <div class="stream-title">Отдел сервиса</div>
+      <ul class="stream-items">
+        <li>Аварийные выезды и диагностики</li>
+        <li>Замена комплектующих</li>
+        <li>Весь спектр ремонтных работ</li>
+        <li>Все бренды и типы оборудования</li>
+      </ul>
+    </div>
+    <div class="stream s3">
+      <div class="stream-bar"></div>
+      <div class="stream-title">Монтаж и поставки</div>
+      <ul class="stream-items">
+        <li>Замена крупных агрегатов</li>
+        <li>Монтаж новых систем</li>
+        <li>Такелажные работы</li>
+        <li>Шефмонтаж оборудования</li>
+      </ul>
+    </div>
+  </div>
+<div class="container">
+  <div class="reveal" style="margin-top:48px">
+    <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray3);margin-bottom:14px">Гибкость модели</div>
+    <h3 style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:20px;color:var(--navy);margin-bottom:8px">Устойчива к шокам</h3>
+    <p style="font-size:14px;color:var(--gray2);margin-bottom:24px">Не требует капитала, масштабируется без риска</p>
+  </div>
+  <div class="flex-grid reveal">
+    <div class="flex-row">
+      <div class="flex-badge" style="background:var(--navy)">0 КАПЕКС</div>
+      <div class="flex-title">Нет инвестиций в оборудование</div>
+      <div class="flex-desc">Работаем на клиентском оборудовании. Нет потребности в дорогостоящих активах для роста выручки.</div>
+    </div>
+    <div class="flex-row">
+      <div class="flex-badge" style="background:var(--teal)">~ФОТ</div>
+      <div class="flex-title">Сдельный ФОТ = гибкие затраты</div>
+      <div class="flex-desc">Все сотрудники получают % от статистик. При снижении объема затраты сокращаются автоматически.</div>
+    </div>
+    <div class="flex-row">
+      <div class="flex-badge" style="background:var(--blue)">↓ BEP</div>
+      <div class="flex-title">Низкая точка безубыточности</div>
+      <div class="flex-desc">Постоянные расходы минимальны.</div>
+    </div>
+    <div class="flex-row">
+      <div class="flex-badge" style="background:var(--amber)">×N</div>
+      <div class="flex-title">Масштабирование без капвложений</div>
+      <div class="flex-desc">Рост выручки - через найм менеджеров, бригад и маркетинга. Без строительства, без склада, без лицензий.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+</div>
+</section>
+
+<!-- КОМАНДА -->
+<section id="team" class="alt-bg2">
+<div class="container">
+  <div class="reveal">
+    <div class="sec-header">
+      <div class="sec-tag">Команда</div>
+      <h2 class="sec-title">21 человек в команде</h2>
+      <p class="sec-sub">Полностью безокладная сдельная система · все офисные с компанией с 2022 г. · <span style="color:var(--gray3);font-size:13px">5 человек на постоянном аутсорсе</span></p>
+    </div>
+  </div>
+  <div class="team-grid reveal">
+    <div class="team-card leader">
+      <div class="team-role">Директор</div>
+      <div class="team-count">1 чел.</div>
+      <div class="team-desc">Стратегия · Финансы · Партнерства</div>
+    </div>
+    <div class="team-card leader">
+      <div class="team-role">Технический директор</div>
+      <div class="team-count">1 чел.</div>
+      <div class="team-desc">Операции · Качество · Инженерный блок</div>
+    </div>
+  </div>
+  <div class="team-row reveal" style="margin-top:14px">
+    <div class="team-card">
+      <div class="team-role">Отдел продаж</div>
+      <div class="team-count">5 чел.</div>
+      <div class="team-desc">КП, клиенты, CRM</div>
+    </div>
+    <div class="team-card" style="background:var(--lteal);border-color:rgba(29,158,117,0.2)">
+      <div class="team-role">Инженеры и монтажники</div>
+      <div class="team-count" style="color:var(--teal)">10 + водитель</div>
+      <div class="team-desc">Сервис и монтаж объектов</div>
+    </div>
+    <div class="team-card">
+      <div class="team-role">Маркетинг</div>
+      <div class="team-count">2 чел.</div>
+      <div class="team-desc">Лиды, SEO, реклама</div>
+    </div>
+    <div class="team-card">
+      <div class="team-role">Финансы</div>
+      <div class="team-count">1 чел.</div>
+      <div class="team-desc">Учет, ЭДО, отчетность</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ERP -->
+<section id="erp" class="alt-bg">
+<div class="container">
+  <div class="reveal">
+    <div class="sec-header">
+      <div class="sec-tag">Автоматизация</div>
+      <h2 class="sec-title">Собственная ERP-платформа</h2>
+      <p class="sec-sub">Вся работа компании внутри одной платформы - 7 отделений с четкими KPI</p>
+    </div>
+  </div>
+  <div class="erp-grid reveal">
+    <div>
+      <h4 style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;color:var(--navy);margin-bottom:14px">Управление и координация</h4>
+      <ul class="mgmt-list">
+        <li class="mgmt-item">Оргструктура из 7 отделений - четкие линии ответственности</li>
+        <li class="mgmt-item">Еженедельные выплаты ЗП по статистикам предыдущей недели</li>
+        <li class="mgmt-item">Финансовое планирование: резервы на ФОТ и премирование</li>
+        <li class="mgmt-item">Telegram-боты + ИИ-автоматизация коммуникаций</li>
+        <li class="mgmt-item">ЭДО + 1С + корпоративная почта + Google Drive</li>
+      </ul>
+    </div>
+    <div>
+      <h4 style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;color:var(--navy);margin-bottom:14px">ERP-модули</h4>
+      <div class="erp-modules">
+        <div class="erp-mod"><div class="erp-mod-title">CRM</div><div class="erp-mod-desc">Клиенты, заявки, история</div></div>
+        <div class="erp-mod"><div class="erp-mod-title">Task Tracker</div><div class="erp-mod-desc">Задачи и исполнение</div></div>
+        <div class="erp-mod"><div class="erp-mod-title">Сервис выездов</div><div class="erp-mod-desc">Учет и планирование</div></div>
+        <div class="erp-mod"><div class="erp-mod-title">Учет финансов</div><div class="erp-mod-desc">ФП, платежный календарь</div></div>
+        <div class="erp-mod"><div class="erp-mod-title">Генератор КП</div><div class="erp-mod-desc">Автоматическое формирование</div></div>
+        <div class="erp-mod"><div class="erp-mod-title">Складской учет</div><div class="erp-mod-desc">Материалы и инструменты</div></div>
+        <div class="erp-mod"><div class="erp-mod-title">Зарплатный модуль</div><div class="erp-mod-desc">Расчет по статистикам</div></div>
+        <div class="erp-mod"><div class="erp-mod-title">Интеграции</div><div class="erp-mod-desc">Телефония, почта, ЭДО</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- МАРКЕТИНГ -->
+<section id="marketing" class="alt-bg2">
+<div class="container">
+  <div class="reveal">
+    <div class="sec-header">
+      <div class="sec-tag">Маркетинг</div>
+      <h2 class="sec-title">Многоканальная лидогенерация</h2>
+      <p class="sec-sub">10+ каналов привлечения клиентов · доля рекламных расходов менее 5% от выручки</p>
+    </div>
+  </div>
+  <div class="channel-grid reveal">
+    <div class="ch-card"><div class="ch-icon">🔍</div><div><div class="ch-title">Реклама в поиске</div><div class="ch-desc">Яндекс.Директ, настроенные кампании</div></div></div>
+    <div class="ch-card"><div class="ch-icon">🎯</div><div><div class="ch-title">Контекст и ретаргетинг</div><div class="ch-desc">Look-alike аудитории, догоняющая реклама</div></div></div>
+    <div class="ch-card"><div class="ch-icon">🌐</div><div><div class="ch-title">SEO оптимизация</div><div class="ch-desc">3 сайта в ТОП-3 по целевым запросам</div></div></div>
+    <div class="ch-card"><div class="ch-icon">📱</div><div><div class="ch-title">Лендинги и квизы</div><div class="ch-desc">Посадочные страницы под сегменты ЦА</div></div></div>
+    <div class="ch-card"><div class="ch-icon">✉️</div><div><div class="ch-title">Email-рассылки</div><div class="ch-desc">Постоянные рассылки по базе клиентов</div></div></div>
+    <div class="ch-card"><div class="ch-icon">📞</div><div><div class="ch-title">Обзвон базы</div><div class="ch-desc">Постоянный обзвон базы</div></div></div>
+    <div class="ch-card"><div class="ch-icon">💬</div><div><div class="ch-title">Мессенджеры</div><div class="ch-desc">Рассылки в Telegram, WhatsApp</div></div></div>
+    <div class="ch-card"><div class="ch-icon">🤝</div><div><div class="ch-title">Сарафан и агентская программа</div><div class="ch-desc">72% - повторные обращения и рекомендации</div></div></div>
+    <div class="ch-card"><div class="ch-icon">📋</div><div><div class="ch-title">Тендерные площадки</div><div class="ch-desc">Коммерческие и госзакупки</div></div></div>
+    <div class="ch-card"><div class="ch-icon">🔗</div><div><div class="ch-title">Агрегаторы</div><div class="ch-desc">Профильные каталоги и маркетплейсы</div></div></div>
+  </div>
+</div>
+</section>
+
+<!-- КЛИЕНТСКАЯ БАЗА -->
+<section id="clients" class="alt-bg">
+<div class="container">
+  <div class="reveal">
+    <div class="sec-header">
+      <div class="sec-tag">Клиентская база</div>
+      <h2 class="sec-title">Диверсифицированная база</h2>
+      <p class="sec-sub">ТРЦ, БЦ, склады, производства - ни один сегмент не критичен</p>
+    </div>
+  </div>
+  <div class="client-grid reveal">
+    <div class="cl-card">
+      <div style="font-size:24px;margin-bottom:10px">🏬</div>
+      <div class="cl-title">ТРЦ и ритейл</div>
+      <div class="cl-desc">Крупные объекты, высокий чек, долгосрочные годовые контракты</div>
+    </div>
+    <div class="cl-card" style="border-top-color:var(--blue)">
+      <div style="font-size:24px;margin-bottom:10px">🏢</div>
+      <div class="cl-title">Бизнес-центры</div>
+      <div class="cl-desc">Регулярное ТО, аварийный сервис, высокая повторяемость заказов</div>
+    </div>
+    <div class="cl-card" style="border-top-color:var(--teal)">
+      <div style="font-size:24px;margin-bottom:10px">📦</div>
+      <div class="cl-title">Склады и производства</div>
+      <div class="cl-desc">Промышленные чиллеры, VRV-системы, системы вентиляции</div>
+    </div>
+    <div class="cl-card" style="border-top-color:var(--amber)">
+      <div style="font-size:24px;margin-bottom:10px">🏨</div>
+      <div class="cl-title">HoReCa и гостиницы</div>
+      <div class="cl-desc">Круглосуточный сервис, высокие требования к надежности</div>
+    </div>
+  </div>
+  <div class="reveal" style="margin-top:20px;background:var(--sky);border-radius:12px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
+    <div style="font-size:13px;color:var(--navy);font-weight:600">Повторные обращения и рекомендации составляют <span style="font-size:20px;font-family:'Montserrat',sans-serif;font-weight:800">72%</span> входящего потока</div>
+    <div style="font-size:12px;color:var(--gray2)">- лучший индикатор качества сервиса</div>
+  </div>
+
+  <div class="reveal" style="margin-top:16px">
+    <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray3);margin-bottom:14px">Из нашего референс-листа</div>
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:10px">
+      <div style="background:#fff;border-radius:12px;padding:16px 10px;border:1px solid var(--line);text-align:center;box-shadow:0 2px 8px rgba(12,68,124,0.05)">
+        <div style="font-size:11px;font-weight:700;color:var(--navy);line-height:1.4;margin-bottom:5px">ЛеманоПро</div>
+        <div style="font-size:10px;color:var(--gray3)">Сеть гипермаркетов</div>
+      </div>
+      <div style="background:#fff;border-radius:12px;padding:16px 10px;border:1px solid var(--line);text-align:center;box-shadow:0 2px 8px rgba(12,68,124,0.05)">
+        <div style="font-size:11px;font-weight:700;color:var(--navy);line-height:1.4;margin-bottom:5px">АВИЛОН</div>
+        <div style="font-size:10px;color:var(--gray3)">Дилерские центры</div>
+      </div>
+      <div style="background:#fff;border-radius:12px;padding:16px 10px;border:1px solid var(--line);text-align:center;box-shadow:0 2px 8px rgba(12,68,124,0.05)">
+        <div style="font-size:11px;font-weight:700;color:var(--navy);line-height:1.4;margin-bottom:5px">ФосАгро</div>
+        <div style="font-size:10px;color:var(--gray3)">Центральный офис</div>
+      </div>
+      <div style="background:#fff;border-radius:12px;padding:16px 10px;border:1px solid var(--line);text-align:center;box-shadow:0 2px 8px rgba(12,68,124,0.05)">
+        <div style="font-size:11px;font-weight:700;color:var(--navy);line-height:1.4;margin-bottom:5px">Газпром</div>
+        <div style="font-size:10px;color:var(--gray3)">Производственные объекты</div>
+      </div>
+      <div style="background:#fff;border-radius:12px;padding:16px 10px;border:1px solid var(--line);text-align:center;box-shadow:0 2px 8px rgba(12,68,124,0.05)">
+        <div style="font-size:11px;font-weight:700;color:var(--navy);line-height:1.4;margin-bottom:5px">Лукойл</div>
+        <div style="font-size:10px;color:var(--gray3)">Производственные объекты</div>
+      </div>
+      <div style="background:#fff;border-radius:12px;padding:16px 10px;border:1px solid var(--line);text-align:center;box-shadow:0 2px 8px rgba(12,68,124,0.05)">
+        <div style="font-size:11px;font-weight:700;color:var(--navy);line-height:1.4;margin-bottom:5px">МТС</div>
+        <div style="font-size:10px;color:var(--gray3)">Офисы и ЦОД</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- АКТИВЫ -->
+<section id="assets" class="alt-bg2">
+<div class="container">
+  <div class="reveal">
+    <div class="sec-header">
+      <div class="sec-tag">Активы компании</div>
+      <h2 class="sec-title">Материальные и нематериальные активы</h2>
+      <p class="sec-sub">Компания активна и сформирована - есть инфраструктура для масштабирования</p>
+    </div>
+  </div>
+  <div class="cards-2 reveal">
+    <div class="card">
+      <div class="card-title" style="margin-bottom:16px">Материальные активы</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;justify-content:space-between;padding:9px 13px;background:var(--bg);border-radius:8px;font-size:13px;color:var(--gray1)"><span>Финансовые резервы</span></div>
+          <div style="display:flex;justify-content:space-between;padding:9px 13px;background:var(--bg);border-radius:8px;font-size:13px;color:var(--gray1)"><span>Фонды компании</span></div>
+          <div style="display:flex;justify-content:space-between;padding:9px 13px;background:var(--bg);border-radius:8px;font-size:13px;color:var(--gray1)"><span>Инструменты и приборы</span></div>
+          <div style="display:flex;justify-content:space-between;padding:9px 13px;background:var(--bg);border-radius:8px;font-size:13px;color:var(--gray1)"><span>Материалы</span></div>
+          <div style="display:flex;justify-content:space-between;padding:9px 13px;background:var(--bg);border-radius:8px;font-size:13px;color:var(--gray1)"><span>Транспорт</span></div>
+          <div style="display:flex;justify-content:space-between;padding:9px 13px;background:var(--bg);border-radius:8px;font-size:13px;color:var(--gray1)"><span>Оборудование</span></div>
+          <div style="display:flex;justify-content:space-between;padding:9px 13px;background:var(--bg);border-radius:8px;font-size:13px;color:var(--gray1)"><span>Офисная техника и мебель</span></div>
+          <div style="display:flex;justify-content:space-between;padding:9px 13px;background:var(--bg);border-radius:8px;font-size:13px;color:var(--gray1)"><span>Складская инфраструктура (стеллажи, техника)</span></div>
+          <div style="display:flex;justify-content:space-between;padding:9px 13px;background:var(--lteal);border-radius:8px;border:1px solid rgba(29,158,117,0.2)">
+            <span style="font-size:13px;font-weight:700;color:var(--teal)">Общая стоимость</span>
+            <span style="font-size:13px;font-weight:700;color:var(--teal)">более 30 млн р.</span>
+          </div>
+        </div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="margin-bottom:16px">Нематериальные активы</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;gap:10px;align-items:flex-start;padding:10px 14px;background:var(--sky);border-radius:8px">
+          <span style="font-size:16px">👥</span>
+          <div><div style="font-weight:600;font-size:13px;color:var(--navy)">Клиентская база</div><div style="font-size:11px;color:var(--gray2)">История заказов, долгосрочные отношения</div></div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;padding:10px 14px;background:var(--sky);border-radius:8px">
+          <span style="font-size:16px">📋</span>
+          <div><div style="font-weight:600;font-size:13px;color:var(--navy)">Регламенты и процессы</div><div style="font-size:11px;color:var(--gray2)">Скрипты, инструкции, описанные рабочие циклы</div></div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;padding:10px 14px;background:var(--sky);border-radius:8px">
+          <span style="font-size:16px">🌐</span>
+          <div><div style="font-weight:600;font-size:13px;color:var(--navy)">Цифровой маркетинг</div><div style="font-size:11px;color:var(--gray2)">3 сайта, SEO ТОП-3, рекламные кабинеты</div></div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;padding:10px 14px;background:var(--sky);border-radius:8px">
+          <span style="font-size:16px">🏆</span>
+          <div><div style="font-weight:600;font-size:13px;color:var(--navy)">Брендинг и референс-лист</div><div style="font-size:11px;color:var(--gray2)">Фирменный стиль, портфолио ключевых клиентов</div></div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;padding:10px 14px;background:var(--sky);border-radius:8px">
+          <span style="font-size:16px">📜</span>
+          <div><div style="font-weight:600;font-size:13px;color:var(--navy)">Сертификаты и допуски</div><div style="font-size:11px;color:var(--gray2)">Партнерства с брендами, допуски к работам</div></div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;padding:10px 14px;background:var(--lteal);border-radius:8px">
+          <span style="font-size:16px">💻</span>
+          <div><div style="font-weight:600;font-size:13px;color:var(--teal)">Собственная ERP-система</div><div style="font-size:11px;color:var(--gray2)">Разработанная под нужды бизнеса платформа - конкурентное преимущество</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- РИСКИ -->
+<section id="risks" class="alt-bg2">
+<div class="container">
+  <div class="reveal">
+    <div class="sec-header">
+      <div class="sec-tag">Риски</div>
+      <h2 class="sec-title">Риски и митигация</h2>
+      <p class="sec-sub">Ключевые риски и как они закрыты</p>
+    </div>
+  </div>
+  <div class="risk-table reveal">
+    <div class="risk-row">
+      <div class="risk-name" style="background:var(--amber)">Кадровый риск</div>
+      <div class="risk-problem">Уход ключевого менеджера или инженера</div>
+      <div class="risk-solution">Описанные процессы, история клиентов в ERP, дублирование функций. Уход сотрудника не обнуляет отношения с клиентом.</div>
+    </div>
+    <div class="risk-row">
+      <div class="risk-name" style="background:var(--blue)">Операционный риск</div>
+      <div class="risk-problem">Штрафы по контрактам</div>
+      <div class="risk-solution">Штрафы ограничены 10% стоимости договора. Финансовые резервы покрывают гарантийные обязательства.</div>
+    </div>
+    <div class="risk-row">
+      <div class="risk-name" style="background:var(--teal)">Рыночный риск</div>
+      <div class="risk-problem">Снижение спроса на климатический сервис</div>
+      <div class="risk-solution">Доказано ростом в кризис 2020 и 2022 г. Обязательный сервис 2× в год - структурная защита спроса.</div>
+    </div>
+    <div class="risk-row">
+      <div class="risk-name" style="background:var(--navy)">Концентрация клиентов</div>
+      <div class="risk-problem">Уход крупного клиента</div>
+      <div class="risk-solution">Диверсифицированная база. Ни один клиент не занимает критичную долю. Отдельный менеджер по ключевым клиентам.</div>
+    </div>
+    <div class="risk-row">
+      <div class="risk-name" style="background:var(--gray2)">Трансформация рынка</div>
+      <div class="risk-problem">Производители заберут сервис себе</div>
+      <div class="risk-solution">Большинство объектов - смешанный парк из 3–5 брендов. Клиенту нужен универсальный подрядчик. Мультибрендовость - структурная защита.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- СОБСТВЕННОСТЬ -->
+<section id="ownership" class="alt-bg">
+<div class="container">
+  <div class="reveal">
+    <div class="sec-header">
+      <div class="sec-tag">Структура</div>
+      <h2 class="sec-title">Деньги каждую неделю - без исключений</h2>
+      <p class="sec-sub">Каждую неделю проходит финансовое планирование. 100% всегда: учредители получают 17% прибыли. Остаток - в инвестиционные фонды. <strong style="color:var(--teal)">Принцип: сначала отчисляется прибыль - только потом бизнес получает средства к распределению.</strong> Это ключевой фактор роста рентабельности, которая будет только расти.</p>
+    </div>
+  </div>
+  <div class="ownership-grid reveal">
+    <div>
+      <div class="card" style="background:var(--sky);border:none;margin-bottom:16px">
+        <div style="font-size:28px;margin-bottom:12px">⚡</div>
+        <div class="card-title" style="font-size:16px;margin-bottom:10px">Еженедельная выплата дивидендов</div>
+        <div class="card-text">Не раз в год, не «по решению собрания». Каждую неделю - по факту поступлений. Инвестор получает деньги, пока бизнес работает.</div>
+      </div>
+      <div class="card">
+        <div class="card-title" style="margin-bottom:10px">Накопление в инвестиционных фондах</div>
+        <div class="card-text">Оставшаяся после выплат прибыль размещается в фондах пропорционально долям учредителей. Капитал работает на долгосрочный горизонт.</div>
+      </div>
+    </div>
+    <div>
+      <div style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;color:var(--navy);margin-bottom:14px">Механизм распределения</div>
+      <div class="profit-flow">
+        <div class="pf-step" style="background:var(--sky)">
+          <div class="pf-label">Выручка недели</div>
+          <div class="pf-val" style="color:var(--navy)">100%</div>
+        </div>
+        <div style="text-align:center;color:var(--gray3);font-size:16px">↓</div>
+        <div class="pf-step" style="background:var(--lteal)">
+          <div class="pf-label" style="color:var(--teal)">⚡ Дивиденды - ВСЕГДА</div>
+          <div class="pf-val" style="color:var(--teal)">17%</div>
+        </div>
+        <div style="text-align:center;color:var(--gray3);font-size:16px">↓</div>
+        <div class="pf-step" style="background:var(--lamber)">
+          <div class="pf-label">Фонды компании</div>
+          <div class="pf-val" style="color:var(--amber)">По долям</div>
+        </div>
+        <div style="text-align:center;color:var(--gray3);font-size:16px">↓</div>
+        <div class="pf-step" style="background:var(--bg)">
+          <div class="pf-label">Финансовое планирование (издержки компании)</div>
+          <div class="pf-val" style="color:var(--gray2)">Остаток</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ЮРИДИКА -->
+<section id="legal" class="alt-bg2">
+<div class="container">
+  <div class="reveal">
+    <div class="sec-header">
+      <div class="sec-tag">Безопасность</div>
+      <h2 class="sec-title">Юридическая чистота и безопасность</h2>
+      <p class="sec-sub">Структура, налоговая история, долговая позиция</p>
+    </div>
+  </div>
+  <div class="legal-grid reveal">
+    <div class="legal-block">
+      <div class="legal-head"><div class="legal-dot" style="background:var(--navy)"></div>Юридическая структура</div>
+      <ul class="legal-items">
+        <li>ООО на ОСНО + ИП на УСН/Патент</li>
+        <li>Фонды компании</li>
+        <li>Доли закреплены учредительским соглашением</li>
+        <li>Диверсификация активов через фонды</li>
+      </ul>
+    </div>
+    <div class="legal-block">
+      <div class="legal-head"><div class="legal-dot" style="background:var(--teal)"></div>Налоговая история</div>
+      <ul class="legal-items">
+        <li>Задолженностей перед ФНС: <span class="zero-badge">0 ₽</span></li>
+        <li>Налоги резервируются до выплаты - обязательства не накапливаются никогда</li>
+        <li>Режим: ОСНО + УСН/Патент</li>
+      </ul>
+    </div>
+    <div class="legal-block">
+      <div class="legal-head"><div class="legal-dot" style="background:var(--blue)"></div>Долги и обязательства</div>
+      <ul class="legal-items">
+        <li>Кредитов и займов: <span class="zero-badge">0 ₽</span></li>
+        <li>Исполнительных производств: нет</li>
+        <li>Принцип: сначала резервируем средства - только потом подписываем договор</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ПОТЕНЦИАЛ РОСТА -->
+<section id="growth" class="alt-bg">
+<div class="container">
+  <div class="reveal">
+    <div class="sec-header">
+      <div class="sec-tag">Потенциал</div>
+      <h2 class="sec-title">Направления роста 2026–2028</h2>
+      <p class="sec-sub">Структура готова к ×10 без перестройки фундамента</p>
+    </div>
+  </div>
+  <div class="growth-grid reveal">
+    <div class="growth-card">
+      <div class="growth-num">×10</div>
+      <div class="growth-title">Масштабирование через команду</div>
+      <div class="growth-text">2023–2025 - выстраивали эффективность: процессы, ERP, KPI. Плановый найм инженеров, менеджеров и маркетинга - основной рычаг кратного роста без перестройки модели.</div>
+    </div>
+    <div class="growth-card" style="background:var(--lteal);border-color:rgba(29,158,117,0.2)">
+      <div class="growth-num" style="color:var(--teal)">Регионы</div>
+      <div class="growth-title">Региональная экспансия</div>
+      <div class="growth-text">Все время роста - Москва и МО. Региональный рынок практически не освоен. Те же проблемы, что в Москве, - еще хуже с предложением. Регионы - следующий уровень масштаба.</div>
+    </div>
+    <div class="growth-card">
+      <div class="growth-num">OEM</div>
+      <div class="growth-title">Собственное производство и поставки</div>
+      <div class="growth-text">Рынок продажи оборудования в разы больше рынка услуг. OEM-поставка через сервисную базу - следующий уровень маржинальности и контроля цепочки ценности.</div>
+    </div>
+    <div class="growth-card" style="background:var(--sky)">
+      <div class="growth-num" style="color:var(--blue)">→</div>
+      <div class="growth-title">Поставки через сервисную базу</div>
+      <div class="growth-text">Клиент на годовом ТО - источник запросов на замены и новые проекты. Чем больше контрактов - тем больше воронка в высокомаржинальные поставки без маркетинговых затрат.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ИНВЕСТОРУ -->
+<section id="investor" class="alt-bg">
+<div class="container">
+  <div class="reveal">
+    <div class="sec-header">
+      <div class="sec-tag">Инвестору</div>
+      <h2 class="sec-title">Кому и почему стоит инвестировать</h2>
+      <p class="sec-sub">Климэйт - не стартап, не спекуляция. Работающий бизнес с прозрачными цифрами и еженедельными выплатами.</p>
+    </div>
+  </div>
+  <div class="inv-grid reveal" style="margin-bottom:24px">
+    <div class="inv-card">
+      <h4>Пассивный доход выше депозита</h4>
+      <p>Регулярные выплаты без операционного участия. Точные цифры предоставим по запросу после подписания NDA</p>
+    </div>
+    <div class="inv-card teal">
+      <h4>Рост стоимости доли</h4>
+      <p>Стоимость доли растет вместе с бизнесом. Инвестируешь на растущей траектории - не на плато.</p>
+    </div>
+    <div class="inv-card">
+      <h4>Твердая ниша, низкий BEP</h4>
+      <p>Жизненно важный продукт с обязательным спросом 2× в год. Бизнес показал рост даже в кризис 2020 и 2022 года.</p>
+    </div>
+    <div class="inv-card teal">
+      <h4>Стабильная клиентская база</h4>
+      <p>72% входящего потока - повторные обращения. Годовые контракты создают предсказуемый денежный поток.</p>
+    </div>
+  </div>
+  <div class="adv-grid reveal">
+    <div class="adv-card"><div class="adv-icon">⚡</div><div class="adv-title">Еженедельные выплаты</div><div class="adv-desc">Дивиденды каждую неделю по факту поступлений - не раз в год</div></div>
+
+    <div class="adv-card"><div class="adv-icon">🔒</div><div class="adv-title">Пассивное участие</div><div class="adv-desc">Операционный менеджмент полностью на команде - время инвестора не требуется</div></div>
+    <div class="adv-card"><div class="adv-icon">📈</div><div class="adv-title">Апсайд на выходе</div><div class="adv-desc">Стоимость доли растет вместе с бизнесом - выход из позиции даст дополнительный доход</div></div>
+    <div class="adv-card"><div class="adv-icon">🏦</div><div class="adv-title">Накопление в фондах</div><div class="adv-desc">Часть прибыли накапливается в фондах компании - капитал растет параллельно</div></div>
+    <div class="adv-card"><div class="adv-icon">✅</div><div class="adv-title">Юридическая чистота</div><div class="adv-desc">0 долгов, 0 претензий ФНС, нотариальное закрепление доли</div></div>
+  </div>
+</div>
+</section>
+
+<!-- КОНТАКТЫ -->
+<section id="contact">
+<div class="container">
+  <div class="reveal" style="text-align:center;padding:40px 0 20px">
+    <div class="sec-tag" style="background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.8);display:inline-block;margin-bottom:20px">Климэйт · 2026</div>
+    <h2 style="font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(28px,4vw,48px);color:#fff;line-height:1.2;margin-bottom:16px">Спасибо за внимание</h2>
+    <p style="font-size:16px;color:rgba(255,255,255,0.65);margin-bottom:40px">Ждем ваших вопросов</p>
+    <a href="mailto:G.Chebotok@klimek.ru?subject=Инвестиционный запрос - Климэйт" 
+       style="display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;padding:14px 32px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none">
+      G.Chebotok@klimek.ru
+    </a>
+
+  </div>
+  <div style="margin-top:48px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.1);text-align:center;font-size:11px;color:rgba(255,255,255,0.25)">
+    КЛИМЭЙТ · Инвестиционная презентация · Май 2026 · Конфиденциально
+  </div>
+</div>
+</section>
+
+<script>
+// CHART 1: Revenue line chart
+const rCtx = document.getElementById('revenueChart').getContext('2d');
+const rGrad = rCtx.createLinearGradient(0, 0, 0, 400);
+rGrad.addColorStop(0, 'rgba(29,158,117,0.18)');
+rGrad.addColorStop(1, 'rgba(29,158,117,0.01)');
+new Chart(rCtx, {
+  type: 'line',
+  data: {
+    labels: ['2020','2021','2022','2023','2024','2025','2026 план'],
+    datasets: [{
+      label: 'Выручка, млн ₽',
+      data: [22,49,110,98,130,152,200],
+      borderColor: '#1D9E75',
+      backgroundColor: rGrad,
+      borderWidth: 3,
+      pointBackgroundColor: ctx => ctx.dataIndex === 6 ? 'rgba(29,158,117,0.5)' : '#1D9E75',
+      pointBorderColor: '#fff',
+      pointBorderWidth: 2.5,
+      pointRadius: 6,
+      tension: 0.4,
+      fill: true,
+      segment: {
+        borderDash: ctx => ctx.p1DataIndex === 6 ? [6,4] : undefined,
+        borderColor: ctx => ctx.p1DataIndex === 6 ? 'rgba(29,158,117,0.5)' : '#1D9E75',
+      }
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ' ' + ctx.parsed.y + ' млн ₽' + (ctx.dataIndex === 6 ? ' (план)' : '') } }
+    },
+    layout: { padding: { left: 10 } },
+    scales: {
+      y: {
+        min: 10,
+        max: 215,
+        grid: { color: '#E2E8F0' },
+        ticks: {
+          font: { size: 11, family: 'Inter' },
+          callback: v => v === 215 ? '' : v + ' млн',
+          stepSize: 50,
+          padding: 8
+        }
+      },
+      x: { grid: { display: false }, ticks: { font: { size: 11, family: 'Inter' } } }
+    }
+  }
+});
+// SCROLL REVEAL
+const obs = new IntersectionObserver(
+  entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') }),
+  { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+);
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// ACTIVE NAV
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if(window.scrollY >= s.offsetTop - 80) current = s.id; });
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#'+current ? '#fff' : 'rgba(255,255,255,0.7)';
+  });
+});
+</script>
+</body>
+</html>
