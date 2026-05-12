@@ -541,7 +541,7 @@ section{padding:80px 0;width:100%;display:block}
     <div class="sec-header">
       <div class="sec-tag">Финансы</div>
       <h2 class="sec-title">Финансовые результаты 2020–2026</h2>
-      <p class="sec-sub">Стабильный рост · индексированные значения (база 2020 = 10)</p>
+      <p class="sec-sub">Стабильный рост · все цифры в млн рублей</p>
       <div class="hook-note">🔒 Точные цифры предоставим по запросу после подписания NDA</div>
     </div>
   </div>
@@ -549,9 +549,9 @@ section{padding:80px 0;width:100%;display:block}
     <div class="kpi-mini"><div class="val">×6.9</div><div class="lbl">Рост выручки 2020→2025</div></div>
     <div class="kpi-mini"><div class="val teal">25%</div><div class="lbl">Рентабельность<br>(чистой прибыли) 2025</div></div>
     <div class="kpi-mini"><div class="val">+32%</div><div class="lbl">Рост прибыли г/г 2024→2025</div></div>
-    <div class="kpi-mini"><div class="val teal">90.9</div><div class="lbl">План выручки 2026<br><span style="font-size:10px;color:var(--gray3)">индекс, база 2020=10</span></div></div>
+    <div class="kpi-mini"><div class="val teal">200</div><div class="lbl">План выручки 2026, млн ₽</div></div>
   </div>
-  <div class="chart-wrap reveal">
+  <div class="chart-wrap reveal" style="height:420px;padding-left:12px">
     <canvas id="revenueChart"></canvas>
   </div>
   <div class="reveal" style="margin-top:16px;font-size:11px;color:var(--gray3);line-height:1.7;font-style:italic;padding:0 4px">
@@ -829,7 +829,8 @@ section{padding:80px 0;width:100%;display:block}
     <div class="card">
       <div class="card-title" style="margin-bottom:16px">Материальные активы</div>
       <div style="display:flex;flex-direction:column;gap:8px">
-          <div style="display:flex;justify-content:space-between;padding:9px 13px;background:var(--bg);border-radius:8px;font-size:13px;color:var(--gray1)"><span>Резервы компании</span></div>
+<div style="display:flex;justify-content:space-between;padding:9px 13px;background:var(--bg);border-radius:8px;font-size:13px;color:var(--gray1)"><span>Финансовые резервы</span></div>
+          <div style="display:flex;justify-content:space-between;padding:9px 13px;background:var(--bg);border-radius:8px;font-size:13px;color:var(--gray1)"><span>Фонды компании</span></div>
           <div style="display:flex;justify-content:space-between;padding:9px 13px;background:var(--bg);border-radius:8px;font-size:13px;color:var(--gray1)"><span>Инструменты и приборы</span></div>
           <div style="display:flex;justify-content:space-between;padding:9px 13px;background:var(--bg);border-radius:8px;font-size:13px;color:var(--gray1)"><span>Материалы</span></div>
           <div style="display:flex;justify-content:space-between;padding:9px 13px;background:var(--bg);border-radius:8px;font-size:13px;color:var(--gray1)"><span>Транспорт</span></div>
@@ -838,7 +839,7 @@ section{padding:80px 0;width:100%;display:block}
           <div style="display:flex;justify-content:space-between;padding:9px 13px;background:var(--bg);border-radius:8px;font-size:13px;color:var(--gray1)"><span>Складская инфраструктура (стеллажи, техника)</span></div>
           <div style="display:flex;justify-content:space-between;padding:9px 13px;background:var(--lteal);border-radius:8px;border:1px solid rgba(29,158,117,0.2)">
             <span style="font-size:13px;font-weight:700;color:var(--teal)">Общая стоимость</span>
-            <span style="font-size:13px;font-weight:700;color:var(--teal)">более 5 млн р.</span>
+            <span style="font-size:13px;font-weight:700;color:var(--teal)">более 30 млн р.</span>
           </div>
         </div>
     </div>
@@ -1099,65 +1100,57 @@ section{padding:80px 0;width:100%;display:block}
 </section>
 
 <script>
-// CHART 1: Revenue (normalized, base 2020=10)
+// CHART 1: Revenue line chart
 const rCtx = document.getElementById('revenueChart').getContext('2d');
-const revData = [10, 22.3, 45.5, 44.5, 59.1, 69.1, 90.9];
+const rGrad = rCtx.createLinearGradient(0, 0, 0, 400);
+rGrad.addColorStop(0, 'rgba(29,158,117,0.18)');
+rGrad.addColorStop(1, 'rgba(29,158,117,0.01)');
 new Chart(rCtx, {
-  type: 'bar',
+  type: 'line',
   data: {
     labels: ['2020','2021','2022','2023','2024','2025','2026 план'],
-    datasets: [
-      {
-        label: 'Выручка (индекс)',
-        data: revData,
-        backgroundColor: ctx => ctx.dataIndex === 6
-          ? 'rgba(24,95,165,0.4)'
-          : 'rgba(24,95,165,0.85)',
-        borderRadius: 6,
-        order: 2,
-      },
-      {
-        label: ' ',
-        data: revData,
-        type: 'line',
-        borderColor: '#1D9E75',
-        backgroundColor: 'transparent',
-        borderWidth: 2.5,
-        pointBackgroundColor: '#1D9E75',
-        pointBorderColor: '#fff',
-        pointBorderWidth: 2,
-        pointRadius: 5,
-        tension: 0.35,
-        fill: false,
-        order: 1,
+    datasets: [{
+      label: 'Выручка, млн ₽',
+      data: [22,49,110,98,130,152,200],
+      borderColor: '#1D9E75',
+      backgroundColor: rGrad,
+      borderWidth: 3,
+      pointBackgroundColor: ctx => ctx.dataIndex === 6 ? 'rgba(29,158,117,0.5)' : '#1D9E75',
+      pointBorderColor: '#fff',
+      pointBorderWidth: 2.5,
+      pointRadius: 6,
+      tension: 0.4,
+      fill: true,
+      segment: {
+        borderDash: ctx => ctx.p1DataIndex === 6 ? [6,4] : undefined,
+        borderColor: ctx => ctx.p1DataIndex === 6 ? 'rgba(29,158,117,0.5)' : '#1D9E75',
       }
-    ]
+    }]
   },
   options: {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
-      legend: {
-        position: 'top',
-        labels: {
-          font: { size: 12, family: 'Inter' },
-          filter: item => item.text.trim() !== ''
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ' ' + ctx.parsed.y + ' млн ₽' + (ctx.dataIndex === 6 ? ' (план)' : '') } }
+    },
+    layout: { padding: { left: 10 } },
+    scales: {
+      y: {
+        min: 10,
+        max: 215,
+        grid: { color: '#E2E8F0' },
+        ticks: {
+          font: { size: 11, family: 'Inter' },
+          callback: v => v === 215 ? '' : v + ' млн',
+          stepSize: 50,
+          padding: 8
         }
       },
-      tooltip: {
-        callbacks: {
-          label: ctx => ctx.datasetIndex === 0 ? ` Выручка: ${ctx.parsed.y}` : null,
-          afterLabel: () => null
-        },
-        filter: item => item.datasetIndex === 0
-      }
-    },
-    scales: {
-      y: { beginAtZero: true, grid: { color: '#E2E8F0' }, ticks: { font: { size: 11 } } },
-      x: { grid: { display: false }, ticks: { font: { size: 11 } } }
+      x: { grid: { display: false }, ticks: { font: { size: 11, family: 'Inter' } } }
     }
   }
 });
-
 // SCROLL REVEAL
 const obs = new IntersectionObserver(
   entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') }),
